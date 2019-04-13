@@ -1,0 +1,103 @@
+<button (click)="goBack()">Trở lại</button>
+<div class="row">
+<div class="col-4">
+<form>
+  <div class="form-group">
+    <label for="name">Họ tên</label>
+    <input type="text" class="form-control" id="name" required [(ngModel)]="nv.name" name="name" #name="ngModel">
+    <div [hidden]="name.valid || name.pristine"
+     class="alert alert-danger">
+  Không được để trống
+</div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="brithday">Ngày sinh</label>
+    <input type="datetime-local" class="form-control" id="brithday" required [(ngModel)]="nv.brithday" name="brithday" #brithday="ngModel">
+    <div [hidden]="brithday.valid || brithday.pristine"
+     class="alert alert-danger">
+     Không được để trống
+</div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="address">Địa chỉ</label>
+    <input type="text" class="form-control" id="address" required [(ngModel)]="nv.address" name="address" #address="ngModel">
+    <div [hidden]="address.valid || address.pristine"
+    class="alert alert-danger">
+    Không được để trống
+</div>
+  </div>
+ 
+  <div class="form-group">
+    <label for="phone">Số điện thoại</label>
+    <input type="text" class="form-control" id="phone" required [(ngModel)]="nv.phone" name="phone" #phone="ngModel">
+    <div [hidden]="phone.valid || phone.pristine"
+    class="alert alert-danger">
+    Không được để trống
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" required [(ngModel)]="nv.email" name="email" #email="ngModel">
+    <div [hidden]="email.valid || email.pristine"
+    class="alert alert-danger">
+    Không được để trống
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cmnd">Số chứng minh nhân dân</label>
+    <input type="text" class="form-control" id="cmnd" required [(ngModel)]="nv.cmnd" name="cmnd" #cmnd="ngModel">
+  
+    <div [hidden]="cmnd.valid || cmnd.pristine"
+    class="alert alert-danger">
+    Không được để trống
+</div></div>
+ 
+<div class="form-group">
+  <label for="caLam">Ca lam viec</label>
+  <input type="number" class="form-control" id="caLam" required [(ngModel)]="nv.caLam" name="caLam" #ca ="ngModel">
+ </div>
+  <div class="form-group">
+    <label for="bacLuong">Bậc lương</label>
+    <input type="number" class="form-control" id="bacLuong" required [(ngModel)]="nv.bacLuong" name="bacLuong" #bacLuong ="ngModel">
+    <div [hidden]="bacLuong.valid || bacLuong.pristine"
+    class="alert alert-danger">
+    Không được để trống
+  </div></div>
+ 
+</form>
+<button class="btn" (click)="Luu()"> Luu thông tin </button>
+</div>
+
+
+<div class="col-8">
+    <h4>Các vị trí làm việc </h4>
+  <table class="table table-striped">
+    
+    <thead>
+    <tr>
+        <th scope="col">Mã Phòng Ban</th>
+      <th scope="col">Tên Phòng Ban</th>
+
+      <th scope="col">Chức Vụ</th>
+  
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cv of chucvu">
+    
+  
+      <td><ngb-highlight [result]="cv.idPb"></ngb-highlight></td>
+      <td><ngb-highlight [result]="cv.tenPB"></ngb-highlight></td>
+      <td><ngb-highlight [result]="cv.tenCV"></ngb-highlight></td>
+      
+    </tr>
+    </tbody>
+    
+  </table>
+</div>
+</div>

@@ -1,0 +1,71 @@
+<button class="btn btn-sm btn-secondary" (click)="goBack()">Trở lại</button>
+<br>
+<div class="hea">
+  <hr>
+  <h2>{{pb.name}}</h2>
+  <h3>Số nhân viên:{{SLNV}}</h3>
+  <hr>                                                              
+
+</div>
+<div class="addNVToRoom ">
+  <div calss="col-sm-6"> Nhân viên
+    <select (change)="selectOption($event.target.value)" class="form-control" id="nv" required>
+      <option value="">-- Chọn Nhân Viên Muốn Thêm --</option>
+      <option *ngFor="let nv of allNV" [value]="nv.idnv">{{nv.name}}</option>
+    </select>
+    Chức Vụ
+    <select (change)="selectOption2($event.target.value)" class="form-control" id="cv" required>
+      <option value="">-- Chọn Chức Vụ --</option>
+      <option *ngFor="let cv of chucvus" [value]="cv.maLoai">{{cv.tenLoai}}</option>
+    </select>
+  </div>
+  <br>
+  <div calss="col-sm=6">
+    <button class="btn btn-sm btn-outline-primary" (click)="themVaoPB(pb.idpb)">Thêm Vào Phòng Ban</button>
+  </div>
+</div>
+<hr>
+<br>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Mã Nhan Viên</th>
+        <th scope="col">Tên Nhân Viên</th>
+        <th scope="col">Email</th>
+
+        <th scope="col">SDT</th>
+        <th scope="col">Ca Lam viec</th>
+        <th scope="col">Chức vụ</th>
+        <th scope="col">Điều Chỉnh</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nv of nhanvien">
+
+        <td>
+          <ngb-highlight [result]="nv.idnv"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="nv.name"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="nv.email"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="nv.phone"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="nv.caLam"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="nv.tenChucVu"></ngb-highlight>
+        </td>
+        <td><button class="btn btn-sm btn-outline-primary" (click)="open();send(nv.idnv,pb.idpb)">Sửa Chức Vụ</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteNV(pb.idpb,nv.idnv,nv.maloai)">Xóa</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

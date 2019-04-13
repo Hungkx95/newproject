@@ -1,0 +1,47 @@
+
+
+<button class="btn btn-sm btn-outline-primary" [routerLink]="[ '/add' ]">Thêm Nhân viên</button>
+<table class="table table-striped">
+  <thead>
+  <tr>
+
+    <th scope="col">ID</th>
+    <th scope="col">Họ Tên</th>
+    <th scope="col">Số điện thoại</th>
+    <th scope="col">Ngày sinh</th>
+    
+    <th scope="col">Địa chỉ</th>
+    <th scope="col">Email</th>
+    <th scope="col">Ca làm việc</th>
+    <th scope="col">Tùy chọn</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let nhanvien of allNV">
+  
+    <td><ngb-highlight [result]="nhanvien.idnv"></ngb-highlight></td>
+    <td><a [routerLink]="[ '/nhanvien', nhanvien.idnv ]">
+      <ngb-highlight [result]="nhanvien.name"></ngb-highlight>
+    </a>
+    </td>
+    <td><ngb-highlight [result]="nhanvien.phone"></ngb-highlight></td>
+    <td><ngb-highlight [result]="nhanvien.brithday | date:'dd-MM-yyyy'"></ngb-highlight></td>
+    <td><ngb-highlight [result]="nhanvien.address"></ngb-highlight></td>
+    <td><ngb-highlight [result]="nhanvien.email"></ngb-highlight></td>
+    <td><ngb-highlight [result]="nhanvien.caLam"></ngb-highlight></td>
+    <td><button [routerLink]="[ '/nhanvien', nhanvien.idnv ]"  class="btn btn-sm btn-outline-primary">Chỉnh Sửa</button> 
+      <button (click)="delete(nhanvien.idnv)" class="btn btn-sm btn-outline-danger">Xóa</button> 
+     
+
+    </td>
+    
+    
+  </tr>
+  </tbody>
+  
+</table>
+
+<router-outlet></router-outlet>
+
+

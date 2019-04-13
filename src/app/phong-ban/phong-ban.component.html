@@ -1,0 +1,55 @@
+<div class="row">
+ 
+
+  <!-- <button> Thêm phong ban</button> -->
+  <div class="col-6">
+      <form>
+          <div class="form-group form-inline">
+            Thêm phòng ban mới: <input class="form-control ml-2" #TenPB type="text"  placeholder="Nhập tên PB mới" [formControl]="filter" />
+            &nbsp; <button class="btn btn-md btn-primary" (click)="add(TenPB.value); TenPB.value=''">Thêm Phòng Ban</button>
+            
+          </div>
+        </form>
+    
+
+    
+    <!-- (click) passes input value to add() and then clears the input -->
+   
+  </div>
+</div>
+<!-- danh acsh phong ban -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Mã Phòng Ban</th>
+      <th scope="col">Tên Phòng Ban</th>
+      <th scope="col">Số nhân viên</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let pb of phongbans |  async; index as i">
+
+      <td>
+        <ngb-highlight [result]="pb.idpb"></ngb-highlight>
+      </td>
+      <a [routerLink]="[ '/room', pb.idpb ]">
+        <td>
+          <ngb-highlight [result]="pb.name"></ngb-highlight>
+        </td>
+      </a>
+      <td>
+        <button class="btn btn-sm btn-outline-primary">Sửa Tên</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="delete(pb.idpb)" [routerLink]="[ '/room' ]">Xóa</button>
+      </td>
+
+
+
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+<router-outlet></router-outlet>

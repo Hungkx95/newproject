@@ -1,0 +1,20 @@
+
+
+<div class="container-fluid">
+  <div class="header">
+    <img ng-src="src\assets\img\topBanner.jpg" alt="aaa">
+  </div>
+    <div class="row">
+      <div class="navi col-3 col-sm-2">
+        <ul class="narvar-das">
+          <li class=""><a [routerLink]="['nhanvien']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Quan ly nhan vien</span></a></li>
+          <li><a [routerLink]="['room']"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Quan ly phong ban</span></a></li>
+         
+        </ul>
+      </div>
+      <div class="col-9 col-sm-10">
+        <router-outlet></router-outlet>
+        
+      </div>
+    </div>
+    </div>
